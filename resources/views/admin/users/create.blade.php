@@ -33,7 +33,7 @@
         </div>
 
         <div class="form-group">
-            {!! Form::file('file', null, ['class' => 'form-control']) !!}
+            {!! Form::file('photo_id', ['class' => 'form-control']) !!}
         </div>
 
 
