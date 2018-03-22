@@ -3,19 +3,27 @@
 namespace App\Http\Controllers;
 
 
-use App\User;
-use App\Role;
+use App\Http\Requests\UsersEditRequest;
+use App\Http\Requests\UsersRequest;
 use App\Photo;
+use App\Role;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Requests\UsersRequest;
-use App\Http\Requests\UsersEditRequest;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 
 class AdminUsersController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -135,7 +143,7 @@ class AdminUsersController extends Controller
             $input['password'] = bcrypt($request->password);
 
         }
-        
+
 
         if($file = $request->file('photo_id')){
 
@@ -164,6 +172,16 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        // $photo = Photo::findOfFail($id);
+
+        unlink(public_path() . $user->photo->file);
+
+        $user->delete();
+
+        Session::flash('deleted_user','The user has been deleted');
+
+        return redirect('/admin/users');
     }
 }

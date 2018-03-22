@@ -10,7 +10,7 @@ class Photo extends Model
 
     protected $uploads = '/images/';
 
-    protected $fillable = ['file'];
+    protected $fillable = ['file', 'user_id'];
 
 
     // Accessor
@@ -19,6 +19,7 @@ class Photo extends Model
         return $this->uploads . $photo;
 
     }
+
 
 
 }

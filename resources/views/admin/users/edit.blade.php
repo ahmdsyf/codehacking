@@ -46,11 +46,24 @@
                 {!! Form::file('photo_id',['class' => 'form-control']) !!}
             </div>
 
-            <br>
+    
             <div class="form-group">
-                {!! Form::submit('Update User', ['class' => 'btn btn-danger btn-block']) !!}
+
+                {!! Form::submit('Update User', ['class' => 'btn btn-primary col-sm-6']) !!}
+                
             </div>
 
+
+        {!! Form::close() !!}
+
+
+        {!! Form::open(['method' => 'DELETE', 'action' => ['AdminUsersController@destroy', $user->id]] ) !!}
+            
+            <div class="form-group">
+
+                {!! Form::submit('Delete', ['class' => 'btn btn-danger col-sm-6']) !!}
+
+            </div>
 
         {!! Form::close() !!}
 

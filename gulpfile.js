@@ -16,7 +16,7 @@ elixir(function(mix) {
 
     .styles([
         'libs/blog-post.css',
-        'libs/bootstrap.css',
+        'libs/bootstrap.min.css',
         'libs/font-awesome.css',
         'libs/metisMenu.css',
         'libs/sb-admin-2.css',
@@ -26,7 +26,7 @@ elixir(function(mix) {
 
     .scripts([
 
-        'libs/bootstrap.js',
+        'libs/bootstrap.min.js',
         'libs/jquery.js',
         'libs/metisMenu.js',
         'libs/sb-admin-2.js',

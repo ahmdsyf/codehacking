@@ -19,10 +19,30 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/admin', function(){
+// Route::get('/admin', function(){
 
-    return view('admin.index');
+//     return view('admin.index');
+
+// });
+
+
+Route::group(['middlewareGroups' => ['admin']], function(){
+
+    Route::get('/admin', function(){
+
+        return view('admin.index');
+
+    })->middleware('admin');
+
+    Route::resource('/admin/users', 'AdminUsersController');
+
+    Route::resource('/admin/posts', 'AdminPostsController');
+
+    Route::resource('/admin/categories', 'AdminCategoriesController');
+
+    Route::resource('/admin/media', 'AdminMediaController');
+
+    // Route::get('/admin/media/upload', ['as' => 'admin.media.upload', 'uses' => 'AdminMediaController@store']);
+    
 });
-
-Route::resource('/admin/users', 'AdminUsersController');
 
