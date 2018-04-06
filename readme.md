@@ -1,6 +1,6 @@
 # step to run the project
 1. copy .env.example then rename .env
-2. if you have an error on key generation ( php artisan key:migrate )
+2. if you have an error on key generation ( php artisan key:generate )
 3. insert dummy data and seeder ( php artisan migrate --seed )
 
 
